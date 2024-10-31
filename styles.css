@@ -1,0 +1,1374 @@
+:root {
+    --page1-color: #f5e6d3;
+    --page2-color: #e8f4f8;
+    --page3-color: #f0e6f6;
+    --page4-color: #e6f6e6;
+    --page5-color: #fff0f0;
+    --page6-color: #f0f8ff;
+    --page7-color: #fff5e6;
+    --page8-color: #f0fff0;
+    --page9-color: #fff0fa;
+    --page10-color: #f5f5f5;
+    --page11-color: #f0f5ff;
+    --page12-color: #fff0f5;
+    --page13-color: #f5f0ff;
+    --page14-color: #fff5f0;
+    --page15-color: #f0fff5;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2c3e50;
+    font-family: 'Cormorant Garamond', serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.library-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    filter: blur(3px) brightness(0.3);
+    z-index: -1;
+}
+
+.book {
+    max-width: 900px;
+    width: 85vw;
+    height: auto;
+    min-height: 500px;
+    margin: 15px auto;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    display: flex;
+    perspective: 1500px;
+    animation: floatBook 3s ease-in-out infinite;
+}
+
+@keyframes floatBook {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.page {
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    padding: clamp(10px, 2vw, 20px);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    position: relative;
+    transform-origin: left;
+    backface-visibility: hidden;
+}
+
+.left-page {
+    border-radius: 10px 0 0 10px;
+    transform-origin: right;
+    background: linear-gradient(to right, #fff9f0, #fff5e6);
+}
+
+.right-page {
+    border-radius: 0 10px 10px 0;
+    transform-origin: left;
+    background: linear-gradient(to left, #fff9f0, #fff5e6);
+}
+
+.content {
+    padding: clamp(15px, 3vw, 25px);
+    line-height: 1.8;
+    color: #2c3e50;
+    position: relative;
+}
+
+h2 {
+    font-size: clamp(20px, 2.5vw, 28px);
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    border-bottom: 2px solid #8b4513;
+    padding-bottom: 15px;
+    line-height: 1.4;
+}
+
+.quote {
+    font-size: clamp(16px, 2vw, 20px);
+    color: #34495e;
+    margin: 15px 0;
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1.8;
+    text-align: left;
+    padding: 0 10px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.8), transparent);
+}
+
+.book-decoration {
+    font-size: 40px;
+    text-align: center;
+    margin: 30px 0;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.book-decoration:hover {
+    opacity: 1;
+}
+
+.bookmark {
+    position: absolute;
+    top: -15px;
+    right: 40px;
+    width: 40px;
+    height: 120px;
+    background: linear-gradient(45deg, #8b4513, #d2691e);
+    border-radius: 5px;
+    transform: rotate(5deg);
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.bookmark:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 15px solid #8b4513;
+}
+
+.page:hover {
+    transform: scale(1.02);
+}
+
+.book-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-button {
+    font-size: clamp(20px, 3vw, 28px);
+    padding: 15px;
+    background: rgba(44, 62, 80, 0.8);
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.nav-button:hover {
+    background: rgba(44, 62, 80, 1);
+    transform: scale(1.1);
+}
+
+.page-spread {
+    display: none;
+    width: 100%;
+}
+
+.page-spread.active {
+    display: flex;
+}
+
+.page-indicator {
+    margin-top: 20px;
+    gap: 15px;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.dot {
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+    background: rgba(44, 62, 80, 0.6);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    font-family: 'Arial', sans-serif;
+}
+
+.dot:hover {
+    background: rgba(139, 69, 19, 0.6);
+    transform: scale(1.1);
+}
+
+.dot.active {
+    background: rgba(139, 69, 19, 0.8);
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(139, 69, 19, 0.4);
+}
+
+.page-spread {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: absolute;
+    width: 100%;
+}
+
+.page-spread.active {
+    opacity: 1;
+    position: relative;
+}
+
+@keyframes pageFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-5px) rotate(1deg); }
+}
+
+.book-decoration {
+    animation: pageFloat 3s infinite ease-in-out;
+}
+
+.quote {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Efecto de transición entre páginas */
+.page-transition {
+    animation: pageChange 0.5s ease-in-out;
+}
+
+@keyframes pageChange {
+    0% { opacity: 0; transform: translateX(-30px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+/* Estilos para el efecto de volteo */
+.page-turn {
+    animation: turnPage 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+@keyframes turnPage {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(-180deg); }
+}
+
+/* Colores específicos para cada spread */
+#spread-1 .page { background: var(--page1-color); }
+#spread-2 .page { background: var(--page2-color); }
+#spread-3 .page { background: var(--page3-color); }
+#spread-4 .page { background: var(--page4-color); }
+#spread-5 .page { background: var(--page5-color); }
+#spread-6 .page { background: var(--page6-color); }
+#spread-7 .page { background: var(--page7-color); }
+#spread-8 .page { background: var(--page8-color); }
+#spread-9 .page { background: var(--page9-color); }
+#spread-10 .page { background: var(--page10-color); }
+#spread-11 .page { background: var(--page11-color); }
+#spread-12 .page { background: var(--page12-color); }
+#spread-13 .page { background: var(--page13-color); }
+#spread-14 .page { background: var(--page14-color); }
+#spread-15 .page { background: var(--page15-color); }
+
+/* Agregamos nuevos estilos para los efectos visuales */
+
+.page-image {
+    width: 100%;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.page-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.magical::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: shine 2s infinite;
+    opacity: 0.3;
+}
+
+@keyframes shine {
+    to {
+        left: 100%;
+    }
+}
+
+.hidden-message {
+    opacity: 0;
+    font-size: clamp(16px, 2vw, 18px);
+    color: #2c3e50;
+    font-style: italic;
+    text-align: center;
+    margin-top: 15px;
+    transition: all 0.5s ease;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.quote:hover + .hidden-message {
+    opacity: 1;
+    transform: translateY(5px);
+}
+
+.mysterious-quote, .enigmatic-quote, .riddle-quote, .philosophical-quote {
+    position: relative;
+    cursor: pointer;
+}
+
+.mysterious-quote::after {
+    content: '?';
+    position: absolute;
+    right: -20px;
+    top: 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.mysterious-quote:hover::after {
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+.constellation {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    bottom: 20px;
+}
+
+.star {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #ffd700;
+    border-radius: 50%;
+    animation: twinkle 1.5s infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: 0.2; }
+    to { opacity: 1; }
+}
+
+.floating-lights {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.floating-lights::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(255,215,0,0.6);
+    border-radius: 50%;
+    animation: float 4s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(10px, -10px); }
+}
+
+/* Agregamos nuevos efectos visuales */
+
+.shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.shimmer::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: rotate(30deg);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) rotate(30deg); }
+    100% { transform: translateX(100%) rotate(30deg); }
+}
+
+.falling-letters {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.letter {
+    position: absolute;
+    color: rgba(139, 69, 19, 0.2);
+    animation: fallDown 4s linear infinite;
+}
+
+@keyframes fallDown {
+    0% { transform: translateY(-100%) rotate(0deg); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(100%) rotate(360deg); opacity: 0; }
+}
+
+.ink-splatter {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgba(139, 69, 19, 0.1) 0%,
+        transparent 70%
+    );
+    animation: expand 2s ease-out infinite;
+}
+
+@keyframes expand {
+    0% { transform: scale(0.95); opacity: 0.5; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(0.95); opacity: 0.5; }
+}
+
+.stardust {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><circle cx="5" cy="5" r="1" fill="rgba(255,215,0,0.5)"/></svg>') repeat;
+    animation: twinkle 4s linear infinite;
+}
+
+.aurora {
+    position: relative;
+    overflow: hidden;
+}
+
+.aurora::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 215, 0, 0.1),
+        rgba(255, 255, 255, 0.1)
+    );
+    animation: aurora 8s linear infinite;
+}
+
+@keyframes aurora {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.aurora-lights {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255, 215, 0, 0.1),
+        transparent
+    );
+    animation: northernLights 5s ease-in-out infinite;
+}
+
+@keyframes northernLights {
+    0%, 100% { opacity: 0.3; transform: translateY(0); }
+    50% { opacity: 0.6; transform: translateY(-10px); }
+}
+
+.sparkles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 215, 0, 0.6);
+    border-radius: 50%;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.5); opacity: 0.7; }
+}
+
+/* Agregamos nuevas animaciones y efectos */
+
+/* Efecto de página brillante */
+.page-glow {
+    animation: pageGlow 3s infinite alternate;
+}
+
+@keyframes pageGlow {
+    0% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.2); }
+    100% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.4); }
+}
+
+/* Efecto de texto que se escribe solo */
+.typing-effect {
+    overflow: hidden;
+    border-right: 2px solid #8b4513;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #8b4513 }
+}
+
+/* Efecto de partículas flotantes */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(255, 215, 0, 0.3);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatParticle 6s infinite linear;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Efecto de ondas en el fondo */
+.wave-effect {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,215,0,0.1), transparent);
+    animation: waveMove 10s infinite linear;
+}
+
+@keyframes waveMove {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+/* Efecto de libro que respira */
+.breathing-book {
+    animation: breathe 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+/* Efecto de página que se dobla en la esquina */
+.page-corner {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.1) 51%);
+    animation: cornerFlip 2s infinite ease-in-out;
+}
+
+@keyframes cornerFlip {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-10deg); }
+}
+
+/* Efecto de tinta que se expande */
+.ink-effect {
+    position: relative;
+    overflow: hidden;
+}
+
+.ink-drop {
+    position: absolute;
+    background: rgba(139, 69, 19, 0.1);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: inkExpand 2s ease-out infinite;
+}
+
+@keyframes inkExpand {
+    to {
+        transform: scale(20);
+        opacity: 0;
+    }
+}
+
+/* Efecto de brillo en el texto */
+.text-glow {
+    animation: textGlow 2s infinite alternate;
+}
+
+@keyframes textGlow {
+    from { text-shadow: 0 0 5px rgba(255,215,0,0.5); }
+    to { text-shadow: 0 0 15px rgba(255,215,0,0.8); }
+}
+
+/* Efecto de página que se voltea en 3D */
+.page-flip-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.page-flip-3d:hover {
+    transform: rotateY(-15deg);
+}
+
+/* Efecto de polvo mágico */
+.magic-dust {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.dust-particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(255,215,0,0.6);
+    border-radius: 50%;
+    animation: dustFloat 4s infinite linear;
+}
+
+@keyframes dustFloat {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-200px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Agregar al final del archivo */
+.music-controls {
+    position: fixed;
+    bottom: 110px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.music-button {
+    background: rgba(139, 69, 19, 0.8);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Cormorant Garamond', serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.music-button:hover {
+    background: rgba(139, 69, 19, 1);
+    transform: scale(1.05);
+}
+
+.music-player {
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.music-player:hover {
+    opacity: 1;
+}
+
+/* Media Queries para Responsividad */
+@media screen and (max-width: 1200px) {
+    .book {
+        width: 800px;
+        height: 500px;
+    }
+
+    .quote {
+        font-size: 18px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .book {
+        width: 700px;
+        height: 450px;
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    .page-image {
+        height: 150px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .book {
+        width: 95vw;
+        height: 80vh;
+        flex-direction: column;
+    }
+
+    .page {
+        width: 100%;
+        height: 50%;
+    }
+
+    .left-page, .right-page {
+        border-radius: 10px;
+    }
+
+    .nav-button {
+        padding: 15px;
+        font-size: 20px;
+    }
+
+    .page-indicator {
+        bottom: 10px;
+    }
+
+    .dot {
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+
+    .music-player {
+        transform: scale(0.8);
+        left: 5px;
+        bottom: 5px;
+    }
+
+    .music-controls {
+        bottom: 90px;
+        left: 5px;
+    }
+
+    .music-button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .book {
+        width: 95vw;
+        height: 85vh;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .quote {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .book-decoration {
+        font-size: 30px;
+        margin: 15px 0;
+    }
+
+    .page-image {
+        height: 120px;
+    }
+
+    .nav-button {
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    .dot {
+        width: 15px;
+        height: 15px;
+        margin: 0 3px;
+    }
+
+    .hidden-message {
+        font-size: 14px;
+    }
+}
+
+/* Para dispositivos muy pequeños */
+@media screen and (max-width: 380px) {
+    .book {
+        width: 98vw;
+        height: 80vh;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .quote {
+        font-size: 14px;
+    }
+
+    .page-image {
+        height: 100px;
+    }
+}
+
+/* Para tablets en modo paisaje */
+@media screen and (min-width: 992px) and (max-height: 768px) {
+    .book {
+        height: 80vh;
+    }
+}
+
+/* Para mantener la proporción en pantallas grandes */
+@media screen and (min-width: 1400px) {
+    .book {
+        width: 1000px;
+        height: 700px;
+    }
+}
+
+/* Para dispositivos en modo paisaje */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    .book {
+        height: 90vh;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    .page-image {
+        height: 100px;
+    }
+
+    .quote {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}
+
+/* Ajustes para animaciones en dispositivos móviles */
+@media (hover: none) {
+    .page:hover {
+        transform: none;
+    }
+
+    .page-image:hover {
+        transform: none;
+    }
+
+    .book-decoration {
+        animation: none;
+    }
+}
+
+/* Ajustes de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Actualizamos los Media Queries para mejor adaptabilidad */
+
+/* Para pantallas extra grandes */
+@media screen and (min-width: 1400px) {
+    .book {
+        width: min(1200px, 85vw);
+        height: min(800px, 80vh);
+    }
+
+    .content {
+        padding: min(60px, 5vw);
+    }
+
+    .quote {
+        font-size: clamp(18px, 2vw, 24px);
+    }
+}
+
+/* Para laptops y pantallas medianas */
+@media screen and (max-width: 1200px) {
+    .book {
+        width: min(900px, 90vw);
+        height: min(600px, 75vh);
+    }
+
+    .content {
+        padding: clamp(20px, 3vw, 40px);
+    }
+
+    .page-image {
+        height: clamp(150px, 25vh, 200px);
+    }
+}
+
+/* Para tablets */
+@media screen and (max-width: 992px) {
+    .book-container {
+        padding: 20px;
+    }
+
+    .book {
+        width: min(700px, 90vw);
+        height: min(500px, 70vh);
+    }
+
+    .quote {
+        font-size: clamp(16px, 1.8vw, 18px);
+        line-height: 1.6;
+    }
+
+    h2 {
+        font-size: clamp(24px, 2.5vw, 28px);
+    }
+
+    .page-indicator {
+        bottom: 20px;
+    }
+}
+
+/* Para tablets pequeñas y móviles grandes */
+@media screen and (max-width: 768px) {
+    .book {
+        width: 95vw;
+        height: auto;
+        min-height: 400px;
+        flex-direction: column;
+    }
+
+    .page {
+        width: 100%;
+        height: auto;
+        min-height: 40vh;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    .page-image {
+        height: 120px;
+    }
+
+    /* Ajuste del reproductor de música */
+    .music-player {
+        transform: scale(0.8);
+        transform-origin: bottom left;
+    }
+
+    .music-controls {
+        left: 10px;
+        bottom: 100px;
+    }
+}
+
+/* Para móviles */
+@media screen and (max-width: 576px) {
+    .book {
+        width: 92vw;
+    }
+
+    .content {
+        padding: 8px;
+    }
+
+    h2 {
+        font-size: clamp(20px, 5vw, 24px);
+        margin-bottom: 15px;
+    }
+
+    .quote {
+        font-size: clamp(14px, 4vw, 16px);
+        line-height: 1.5;
+    }
+
+    .page-image {
+        height: 100px;
+    }
+
+    .nav-button {
+        padding: clamp(8px, 2vw, 12px);
+        font-size: clamp(16px, 4vw, 20px);
+    }
+
+    /* Ajuste de los puntos de navegación */
+    .dot {
+        width: clamp(12px, 3vw, 15px);
+        height: clamp(12px, 3vw, 15px);
+        margin: 0 2px;
+    }
+
+    .page-indicator {
+        bottom: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+        padding: 0 10px;
+    }
+}
+
+/* Para móviles pequeños */
+@media screen and (max-width: 380px) {
+    .book {
+        width: 95vw;
+        min-height: 300px;
+    }
+
+    .content {
+        padding: 8px;
+    }
+
+    .quote {
+        font-size: clamp(13px, 3.5vw, 15px);
+    }
+
+    .page-image {
+        height: 80px;
+    }
+}
+
+/* Para modo paisaje en móviles */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+    .book {
+        flex-direction: row;
+        height: 85vh;
+    }
+
+    .page {
+        height: 100%;
+        width: 50%;
+    }
+
+    .content {
+        padding: clamp(10px, 2vh, 20px);
+    }
+
+    .page-image {
+        height: clamp(80px, 25vh, 120px);
+    }
+
+    .quote {
+        font-size: clamp(12px, 2.5vh, 16px);
+        line-height: 1.4;
+    }
+
+    .page-indicator {
+        bottom: 5px;
+    }
+}
+
+/* Ajustes generales de flexibilidad */
+.page {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Asegurar que las imágenes mantengan su proporción */
+.page-image {
+    object-fit: cover;
+    width: 100%;
+}
+
+/* Ajustes de accesibilidad mejorados */
+@media (prefers-reduced-motion: reduce) {
+    .book, .page, .quote, .page-image {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+    }
+}
+
+/* Ajustes para pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .page-image {
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+/* Mejoras en la legibilidad y comodidad de lectura */
+
+/* Ajuste del contenedor principal para mejor visualización */
+.book {
+    max-width: 900px;
+    width: 85vw;
+    height: auto;
+    min-height: 500px;
+    margin: 15px auto;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Mejora en la tipografía y espaciado */
+.content {
+    padding: clamp(15px, 3vw, 25px);
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+}
+
+h2 {
+    font-size: clamp(20px, 2.5vw, 28px);
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    border-bottom: 2px solid #8b4513;
+    padding-bottom: 15px;
+    line-height: 1.4;
+}
+
+.quote {
+    font-size: clamp(16px, 2vw, 20px);
+    color: #34495e;
+    margin: 15px 0;
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1.8;
+    text-align: left;
+    padding: 0 10px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.8), transparent);
+}
+
+/* Mejora en el contraste y legibilidad */
+.page {
+    background: #fff;
+    padding: clamp(10px, 2vw, 20px);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* Espaciado mejorado para lectura */
+.page-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Mejora en la navegación */
+.nav-button {
+    font-size: clamp(20px, 3vw, 28px);
+    padding: 15px;
+    background: rgba(44, 62, 80, 0.8);
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.nav-button:hover {
+    background: rgba(44, 62, 80, 1);
+    transform: scale(1.1);
+}
+
+/* Indicadores de página más claros */
+.page-indicator {
+    margin-top: 20px;
+    gap: 15px;
+}
+
+.dot {
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+    background: rgba(44, 62, 80, 0.6);
+    transition: all 0.3s ease;
+}
+
+/* Mejoras para dispositivos móviles */
+@media screen and (max-width: 768px) {
+    .book {
+        width: 95vw;
+        margin: 10px auto;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    .quote {
+        font-size: 15px;
+        line-height: 1.5;
+        padding: 10px 5px;
+    }
+
+    /* Mejor navegación en móviles */
+    .nav-button {
+        padding: 15px;
+        margin: 0 5px;
+    }
+
+    .page-indicator {
+        bottom: 5px;
+    }
+}
+
+/* Mejoras en el contraste para mejor lectura */
+.hidden-message {
+    font-size: clamp(16px, 2vw, 18px);
+    color: #2c3e50;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+/* Efectos más suaves para no distraer la lectura */
+.magical::after {
+    opacity: 0.3;
+}
+
+.page-image {
+    margin-bottom: 15px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Modo oscuro opcional para mejor lectura nocturna */
+@media (prefers-color-scheme: dark) {
+    .book {
+        background: rgba(44, 62, 80, 0.95);
+    }
+
+    .page {
+        background: #34495e;
+    }
+
+    .quote {
+        color: #ecf0f1;
+    }
+
+    h2 {
+        color: #ecf0f1;
+    }
+
+    .hidden-message {
+        color: #ecf0f1;
+        background: rgba(44, 62, 80, 0.9);
+    }
+}
+
+/* Animaciones más sutiles para no distraer */
+.book-decoration {
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.book-decoration:hover {
+    opacity: 1;
+}
+
+/* Mejora en la experiencia de lectura */
+.quote:hover {
+    transform: none;
+    background: rgba(255,255,255,0.1);
+    transition: background 0.3s ease;
+}
+
+/* Espaciado adaptativo */
+@media screen and (min-height: 800px) {
+    .book {
+        min-height: 70vh;
+    }
+
+    .content {
+        padding: clamp(30px, 5vw, 50px);
+    }
+}

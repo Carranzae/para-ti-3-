@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Viaje entre Páginas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="library-background"></div>
+    <div class="music-player">
+        <iframe
+            id="spotifyPlayer"
+            src="https://open.spotify.com/embed/track/1WlHEq9s2TWVwdGY5NzJTt?autoplay=1"
+            width="300"
+            height="80"
+            frameborder="0"
+            allowtransparency="true"
+            allow="encrypted-media; autoplay"
+            style="position: fixed; bottom: 20px; left: 20px; z-index: 1000; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);"
+        ></iframe>
+        <div class="music-controls">
+            <button id="toggleMusic" class="music-button">
+                🎵 Pausar Música
+            </button>
+        </div>
+    </div>
+    <div class="book-container">
+        <button class="nav-button prev">❮</button>
+        <div class="book">
+            <!-- Página 1: El Misterio Inicial -->
+            <div class="page-spread active" id="spread-1">
+                <div class="page left-page">
+                    <div class="content">
+                        <div class="page-image" style="background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <h2>Laberintos de Papel</h2>
+                        <p class="quote mysterious-quote">"¿Alguna vez has notado cómo algunos libros parecen encontrarte a ti, en lugar de tú a ellos? Como si las historias supieran exactamente cuándo necesitas leerlas..."</p>
+                        <div class="hidden-message">¿Qué historias te han encontrado últimamente?</div>
+                        <div class="book-decoration floating">📚</div>
+                    </div>
+                </div>
+                <div class="page right-page">
+                    <div class="content">
+                        <div class="page-image" style="background-image: url('https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <p class="quote enigmatic-quote">"Dicen que cada lector vive mil vidas antes de morir... Me pregunto cuántas de tus vidas se han cruzado sin saberlo con las mías en algún párrafo perdido..."</p>
+                        <div class="hidden-message">¿En qué historia estaremos ahora?</div>
+                        <div class="book-decoration floating">✨</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página 2: Reflexiones -->
+            <div class="page-spread" id="spread-2">
+                <div class="page left-page">
+                    <div class="content">
+                        <div class="page-image magical" style="background-image: url('https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <h2>Enigmas del Tiempo</h2>
+                        <p class="quote riddle-quote">"¿No es curioso cómo algunas personas son como prólogos de historias que aún no sabemos que necesitamos leer? Como capítulos que esperan pacientemente su momento de ser descubiertos..."</p>
+                        <div class="hidden-message">¿Qué capítulos aguardan en tu historia?</div>
+                        <div class="constellation">
+                            <span class="star"></span>
+                            <span class="star"></span>
+                            <span class="star"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="page right-page">
+                    <div class="content">
+                        <div class="page-image" style="background-image: url('https://images.unsplash.com/photo-1533669955142-6a73332af4db?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <p class="quote philosophical-quote">"Entre líneas de tinta y silencios de papel, hay preguntas que solo el tiempo sabe responder... ¿Cuántas veces has encontrado respuestas en páginas que no buscabas?"</p>
+                        <div class="hidden-message">Las coincidencias son el lenguaje del destino...</div>
+                        <div class="floating-lights"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página 3: Conexiones Invisibles -->
+            <div class="page-spread" id="spread-3">
+                <div class="page left-page">
+                    <div class="content">
+                        <div class="page-image magical" style="background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <h2>Coincidencias</h2>
+                        <p class="quote mysterious-quote">"¿Sabes? Dicen que las mejores historias suceden cuando menos las esperamos. Como encontrarte en la biblioteca, perdida entre estantes, creando tu propia magia..."</p>
+                        <div class="book-decoration">🔮</div>
+                    </div>
+                </div>
+                <div class="page right-page">
+                    <div class="content">
+                        <div class="page-image" style="background-image: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <p class="quote enigmatic-quote">"Hay personas que sin saberlo, escriben capítulos importantes en las vidas de otros. Tú, sin notarlo, has comenzado a escribir en la mía..."</p>
+                        <div class="book-decoration">✍️</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página 4: Mundos Paralelos -->
+            <div class="page-spread" id="spread-4">
+                <div class="page left-page">
+                    <div class="content">
+                        <div class="page-image magical" style="background-image: url('https://images.unsplash.com/photo-1518756131217-31eb79b20e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <h2>Entre Realidad y Ficción</h2>
+                        <p class="quote mysterious-quote">"Me pregunto qué personajes viven en tu mente, qué aventuras tejes en tus pensamientos..."</p>
+                        <div class="book-decoration">🌌</div>
+                    </div>
+                </div>
+                <div class="page right-page">
+                    <div class="content">
+                        <div class="page-image" style="background-image: url('https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <p class="quote enigmatic-quote">"Mientras tú viajas por mundos de papel, yo descubro universos nuevos en tus sonrisas fugaces..."</p>
+                        <div class="book-decoration">💫</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página 5: Sueños y Esperanzas -->
+            <div class="page-spread" id="spread-5">
+                <div class="page left-page">
+                    <div class="content">
+                        <div class="page-image magical" style="background-image: url('https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <h2>Páginas por Escribir</h2>
+                        <p class="quote mysterious-quote">"A veces pienso que la vida es como esos libros que tanto amas: llena de capítulos sorprendentes..."</p>
+                        <div class="book-decoration">🌅</div>
+                    </div>
+                </div>
+                <div class="page right-page">
+                    <div class="content">
+                        <div class="page-image" style="background-image: url('https://images.unsplash.com/photo-1474377207190-a7d8b3334068?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <p class="quote enigmatic-quote">"Y aunque no sé qué capítulo soy en tu historia, espero ser uno de esos que vale la pena releer..."</p>
+                        <div class="book-decoration">🌠</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página 6: Los Sueños -->
+            <div class="page-spread" id="spread-6">
+                <div class="page left-page">
+                    <div class="content">
+                        <div class="page-image magical" style="background-image: url('https://images.unsplash.com/photo-1490633874781-1c63cc424610?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <h2>Sueños de Papel</h2>
+                        <p class="quote mysterious-quote">"Como esos libros que nos mantienen despiertos hasta el amanecer..."</p>
+                        <div class="book-decoration">🌠</div>
+                    </div>
+                </div>
+                <div class="page right-page">
+                    <div class="content">
+                        <div class="page-image" style="background-image: url('https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <p class="quote enigmatic-quote">"Entre párrafos de ilusiones y metáforas de esperanza..."</p>
+                        <div class="book-decoration">✨</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página 7: El Misterio -->
+            <div class="page-spread" id="spread-7">
+                <div class="page left-page">
+                    <div class="content">
+                        <div class="page-image magical" style="background-image: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <h2>Enigmas del Corazón</h2>
+                        <p class="quote mysterious-quote">"Como en las mejores novelas de misterio..."</p>
+                        <div class="book-decoration">🔍</div>
+                    </div>
+                </div>
+                <div class="page right-page">
+                    <div class="content">
+                        <div class="page-image" style="background-image: url('https://images.unsplash.com/photo-1533669955142-6a73332af4db?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <p class="quote enigmatic-quote">"Y en este misterio llamado destino..."</p>
+                        <div class="book-decoration">📖</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página 8: La Aventura -->
+            <div class="page-spread" id="spread-8">
+                <div class="page left-page">
+                    <div class="content">
+                        <div class="page-image magical" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <h2>Aventuras por Escribir</h2>
+                        <p class="quote mysterious-quote">"Como esas historias de aventuras que nos hacen soñar con mundos lejanos, así imagino nuestro futuro: lleno de capítulos por descubrir..."</p>
+                        <div class="hidden-message">¿Qué aventuras nos esperan?</div>
+                        <div class="book-decoration floating">🗺️</div>
+                        <div class="sparkles"></div>
+                    </div>
+                </div>
+                <div class="page right-page">
+                    <div class="content">
+                        <div class="page-image shimmer" style="background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <p class="quote enigmatic-quote">"Porque la vida es el libro más emocionante, y contigo, cada página promete ser una nueva aventura..."</p>
+                        <div class="hidden-message">Los mejores viajes comienzan con una página...</div>
+                        <div class="book-decoration floating">🌎</div>
+                        <div class="floating-lights"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página 9: La Poesía -->
+            <div class="page-spread" id="spread-9">
+                <div class="page left-page">
+                    <div class="content">
+                        <div class="page-image magical" style="background-image: url('https://images.unsplash.com/photo-1447069387593-a5de0862481e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <h2>Versos del Alma</h2>
+                        <p class="quote poetic-quote">"Como versos que danzan en páginas blancas, así late mi corazón cuando estás cerca, componiendo poemas que solo tú inspiras..."</p>
+                        <div class="hidden-message">Cada mirada es un verso sin escribir...</div>
+                        <div class="book-decoration floating">🎭</div>
+                        <div class="falling-letters"></div>
+                    </div>
+                </div>
+                <div class="page right-page">
+                    <div class="content">
+                        <div class="page-image glow" style="background-image: url('https://images.unsplash.com/photo-1472905981516-5ac09f35b7f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <p class="quote lyrical-quote">"En este poema llamado vida, tú eres la metáfora más bella, el verso que siempre quiero releer..."</p>
+                        <div class="hidden-message">Algunas poesías se escriben con miradas...</div>
+                        <div class="book-decoration floating">🖋️</div>
+                        <div class="ink-splatter"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página 10: El Epílogo -->
+            <div class="page-spread" id="spread-10">
+                <div class="page left-page">
+                    <div class="content">
+                        <div class="page-image magical" style="background-image: url('https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <h2>Nuestro Epílogo Infinito</h2>
+                        <p class="quote dreamy-quote">"Como esos finales que nos dejan sin aliento, así quiero que sea nuestra historia: infinita, memorable, extraordinaria..."</p>
+                        <div class="hidden-message">Algunos finales son solo nuevos comienzos...</div>
+                        <div class="book-decoration floating">💫</div>
+                        <div class="stardust"></div>
+                    </div>
+                </div>
+                <div class="page right-page">
+                    <div class="content">
+                        <div class="page-image aurora" style="background-image: url('https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <p class="quote mystical-quote">"Porque algunas historias no necesitan un final, solo nuevos capítulos que escribir juntos..."</p>
+                        <div class="hidden-message">La mejor historia es la que aún no termina...</div>
+                        <div class="book-decoration floating">💝</div>
+                        <div class="aurora-lights"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agregamos las nuevas páginas después de la página 10 -->
+
+            <!-- Página 11: El Destino -->
+            <div class="page-spread" id="spread-11">
+                <div class="page left-page">
+                    <div class="content">
+                        <div class="page-image magical" style="background-image: url('https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <h2>Caminos Entrelazados</h2>
+                        <p class="quote mysterious-quote">"¿Has notado cómo algunos momentos parecen sacados de las páginas de un libro? Como si el universo fuera un autor silencioso, tejiendo tramas que no alcanzamos a comprender..."</p>
+                        <div class="hidden-message">¿Cuántas coincidencias hacen un destino?</div>
+                        <div class="constellation">
+                            <span class="star"></span>
+                            <span class="star"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="page right-page">
+                    <div class="content">
+                        <div class="page-image" style="background-image: url('https://images.unsplash.com/photo-1533669955142-6a73332af4db?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <p class="quote enigmatic-quote">"Entre estantes de biblioteca y pasillos de universidad, hay historias esperando ser descubiertas, personajes anhelando encontrarse..."</p>
+                        <div class="hidden-message">A veces, el mejor capítulo está por comenzar...</div>
+                        <div class="floating-lights"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página 12: Los Secretos -->
+            <div class="page-spread" id="spread-12">
+                <div class="page left-page">
+                    <div class="content">
+                        <div class="page-image magical" style="background-image: url('https://images.unsplash.com/photo-1474366521946-c3d4b507abf2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <h2>Susurros del Corazón</h2>
+                        <p class="quote riddle-quote">"Como esos párrafos subrayados que guardamos en secreto, hay palabras que danzan en mi mente cada vez que te veo sumergida en tus lecturas..."</p>
+                        <div class="hidden-message">¿Qué historias guardas en tu corazón?</div>
+                        <div class="book-decoration floating">🌹</div>
+                    </div>
+                </div>
+                <div class="page right-page">
+                    <div class="content">
+                        <p class="quote philosophical-quote">"Dicen que los mejores secretos son aquellos escritos entre líneas, en los márgenes de las páginas que nadie más lee..."</p>
+                        <div class="hidden-message">Algunos silencios dicen más que mil palabras...</div>
+                        <div class="book-decoration floating">✨</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página 13: El Tiempo -->
+            <div class="page-spread" id="spread-13">
+                <div class="page left-page">
+                    <div class="content">
+                        <div class="page-image" style="background-image: url('https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <h2>Momentos Eternos</h2>
+                        <p class="quote mysterious-quote">"¿No es fascinante cómo el tiempo parece detenerse cuando encontramos algo especial? Como cuando descubres una frase que parece escrita solo para ti..."</p>
+                        <div class="hidden-message">Cada momento es una página nueva...</div>
+                        <div class="constellation"></div>
+                    </div>
+                </div>
+                <div class="page right-page">
+                    <div class="content">
+                        <p class="quote enigmatic-quote">"En el reloj de la vida, hay momentos que brillan como estrellas en la noche, iluminando páginas que aún no hemos escrito..."</p>
+                        <div class="hidden-message">El tiempo tiene su propia forma de contar historias...</div>
+                        <div class="floating-lights"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página 14: Los Sueños Compartidos -->
+            <div class="page-spread" id="spread-14">
+                <div class="page left-page">
+                    <div class="content">
+                        <div class="page-image magical" style="background-image: url('https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <h2>Historias por Contar</h2>
+                        <p class="quote riddle-quote">"Como esas historias que esperan ser descubiertas en una biblioteca infinita, hay sueños que aguardan el momento perfecto para ser compartidos..."</p>
+                        <div class="hidden-message">¿Qué historias soñamos juntos sin saberlo?</div>
+                        <div class="book-decoration floating">🌟</div>
+                    </div>
+                </div>
+                <div class="page right-page">
+                    <div class="content">
+                        <p class="quote philosophical-quote">"Quizás nuestros caminos son como líneas paralelas en un libro, destinadas a encontrarse en el horizonte de una página aún no escrita..."</p>
+                        <div class="hidden-message">Los mejores sueños son los que compartimos...</div>
+                        <div class="book-decoration floating">💫</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página 15: El Principio -->
+            <div class="page-spread" id="spread-15">
+                <div class="page left-page">
+                    <div class="content">
+                        <div class="page-image" style="background-image: url('https://images.unsplash.com/photo-1476275466078-4007374efbbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')"></div>
+                        <h2>El Inicio de Algo Especial</h2>
+                        <p class="quote mysterious-quote">"Como el comienzo de un libro que promete cambiar tu vida, hay encuentros que marcan el inicio de las historias más hermosas..."</p>
+                        <div class="hidden-message">Cada final es un nuevo comienzo...</div>
+                        <div class="constellation"></div>
+                    </div>
+                </div>
+                <div class="page right-page">
+                    <div class="content">
+                        <p class="quote enigmatic-quote">"Y así, entre páginas de destino y capítulos de coincidencias, quizás estemos escribiendo, sin saberlo, el inicio de nuestra propia historia..."</p>
+                        <div class="hidden-message">Las mejores historias comienzan con una mirada...</div>
+                        <div class="floating-lights"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="nav-button next">❯</button>
+    </div>
+    <div class="page-indicator">
+        <span class="dot active" data-page="1">1</span>
+        <span class="dot" data-page="2">2</span>
+        <span class="dot" data-page="3">3</span>
+        <span class="dot" data-page="4">4</span>
+        <span class="dot" data-page="5">5</span>
+        <span class="dot" data-page="6">6</span>
+        <span class="dot" data-page="7">7</span>
+        <span class="dot" data-page="8">8</span>
+        <span class="dot" data-page="9">9</span>
+        <span class="dot" data-page="10">10</span>
+        <span class="dot" data-page="11">11</span>
+        <span class="dot" data-page="12">12</span>
+        <span class="dot" data-page="13">13</span>
+        <span class="dot" data-page="14">14</span>
+        <span class="dot" data-page="15">15</span>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
